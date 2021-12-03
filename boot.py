@@ -7,8 +7,21 @@ bot = commands.Bot("!")
 async def on_ready():
     print(f"Estou pronto! Estou conectado como {bot.user}")
 
+#Evento async para não retornar mensagens do bot
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    if "palavrão" in message.content:
+        await message.channel.snd(f"Por favor,{message.author.name},não ofenda os demais usuários!")
+
+        await message.delete()
+
+    await  bot.process_commands(message)
+
 #Quando digitar o prefixo !oi executa a função send_hello
-@bot.commands(name="oi")
+@bot.command(name="oi")
 async def send_hello(ctx):
     name = ctx.author.name
 
@@ -17,4 +30,4 @@ async def send_hello(ctx):
     await ctx.send(response)
 
 
-bot.run("TOKEN_AQUI")
+bot.run("TOKE_AQUI")
