@@ -33,6 +33,16 @@ async def send_hello(ctx):
     response = "Ola, " + name
 
     await ctx.send(response)
+
+#Func para o bot calcular
+@bot.command(name="calcular")
+async def calculate_expression(ctx, *expression):  #*expression é para pegar todos os argumentos passados no parametro expression (tupla)
+    expression = ''.join(expression) #.join para pegar cada elemento da tupla e inserir na string ("")
+    response = eval(expression)
+
+    await ctx.send("A Resposta é : " + str(response))
+
+
 #Atualiza data e hora no canal geral do servidor
 @tasks.loop(seconds=100)
 async def current_time():
@@ -40,7 +50,7 @@ async def current_time():
 
     now = now.strftime("%d/%m/%Y às %H:%M:%S")
 
-    channel = bot.get_channel(915984953395785804) #id do canal geral
+    channel = bot.get_channel(ID_SALA_AQUI) #id do canal geral
 
     await channel.send("Data atual :" + now)
 
