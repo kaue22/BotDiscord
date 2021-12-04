@@ -1,4 +1,5 @@
 import discord
+from discord import channel
 from discord.ext import commands, tasks
 import datetime
 import requests
@@ -68,10 +69,10 @@ async def current_time():
 
     now = now.strftime("%d/%m/%Y às %H:%M:%S")
 
-    channel = bot.get_channel(915984953395785804)  # id do canal geral
+    channel = bot.get_channel(ID_CANAL_AQUI)  # id do canal geral
 
     await channel.send("Data atual :" + now)
 
 
 bot.run(
-    "OTE2Mjk4OTY1MTYxNDg0MzU5.YaoH6Q.N8nZ5f2o1dgOpiuw4aEBZYtdpjI")  # TOKEN QUE VOCÊ PEGA NA PAGINA DE DESENVOLVEDOR DO DISCORD
+    "TOKEN_AQUI")  # TOKEN QUE VOCÊ PEGA NA PAGINA DE DESENVOLVEDOR DO DISCORD
