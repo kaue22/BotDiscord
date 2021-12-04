@@ -1,11 +1,14 @@
 import discord
-from discord import channel
+from discord import channel, client
 from discord.ext import commands, tasks
 import datetime
 import requests
+import asyncio
 
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix="!", case_insensitive=True, intents=intents)
 
-bot = commands.Bot("!")
 
 @bot.event
 async def on_ready():
@@ -27,6 +30,16 @@ async def on_message(message):
     await message.delete()
 
     await bot.process_commands(message)
+
+
+@bot.event
+async def on_member_join(member):
+    hello = bot.get_channel(915984953395785800)
+
+    message = await hello.send(f"Bem vindo {member.mention}  ao canal do estudo aws HLIS!!")
+
+    await asyncio.sleep(10)
+    await message.delete()
 
 
 # Quando digitar o prefixo !oi executa a função send_hello
@@ -62,17 +75,21 @@ async def find_cep(ctx, cep):
         await ctx.send(f"O valor do par é {cep} e {logradouro} e {bairro}")
 
 
+@bot.command(name="foipior")
+async def foi_pior(ctx):
+    await ctx.send(file=discord.File('foipior.jpeg'))
+
+
 # Atualiza data e hora no canal geral do servidor
-@tasks.loop(seconds=100)
+@tasks.loop(seconds=86400)
 async def current_time():
     now = datetime.datetime.now()
 
     now = now.strftime("%d/%m/%Y às %H:%M:%S")
 
-    channel = bot.get_channel(ID_CANAL_AQUI)  # id do canal geral
+    channel = bot.get_channel(915984953395785804)  # id do canal geral
 
-    await channel.send("Data atual :" + now)
+    await channel.send("****************** Data atual ****************** :" + now)
 
 
-bot.run(
-    "TOKEN_AQUI")  # TOKEN QUE VOCÊ PEGA NA PAGINA DE DESENVOLVEDOR DO DISCORD
+bot.run("TOKEN_AQUI")  # TOKEN QUE VOCÊ PEGA NA PAGINA DE DESENVOLVEDOR DO DISCORD
