@@ -1,6 +1,4 @@
 import asyncio
-import datetime
-
 from discord.ext import commands, tasks
 from discord.ext.commands import MissingRequiredArgument, CommandNotFound
 
@@ -27,8 +25,6 @@ class Manager(commands.Cog):
             )
 
         await message.delete()
-
-        await self.bot.process_commands(message)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):

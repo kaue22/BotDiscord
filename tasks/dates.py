@@ -19,7 +19,7 @@ class Dates(commands.Cog):
 
         now = now.strftime("%d/%m/%Y às %H:%M:%S")
 
-        channel = self.bot.get_channel(915984953395785804)
+        channel = self.bot.get_channel(917034616177721375)
 
         await channel.send("Data atual: " + now)
 
