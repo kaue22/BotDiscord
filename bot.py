@@ -72,12 +72,16 @@ async def find_cep(ctx, cep):
     bairro = data.get("bairro")
 
     if cep:
-        await ctx.send(f"O valor do par é {cep} e {logradouro} e {bairro}")
+        await ctx.send(f"O cep é {cep} e {logradouro} e {bairro}")
 
 
 @bot.command(name="foipior")
 async def foi_pior(ctx):
     await ctx.send(file=discord.File('foipior.jpeg'))
+
+@bot.command(name="jamais")
+async def foi_pior(ctx):
+    await ctx.send(file=discord.File('jamais.jpeg'))
 
 
 # Atualiza data e hora no canal geral do servidor
