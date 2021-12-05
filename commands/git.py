@@ -8,7 +8,7 @@ class Git(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="git", help="FOI PIOR")
+    @commands.command(name="git", help="GIT PARA AJUDAR NO DESENVOLVIMENTO DO NOSSO BOT")
     async def git_help(self, ctx):
         await ctx.send("AJUDE O KAUÊ A MELHORAR ESSE BOT")
         await ctx.send("https://github.com/kaue22/BotDiscord")
