@@ -29,9 +29,9 @@ class Manager(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         hello = self.bot.get_channel(915984953395785800)
-
+        print(hello)
         message = await hello.send(f"Bem vindo {member.mention}  ao canal do estudo aws HLIS!!")
-
+        print(message)
         await asyncio.sleep(10)
         await message.delete()
 
